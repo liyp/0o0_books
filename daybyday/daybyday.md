@@ -1,6 +1,7 @@
-十月
+日常
 =======
 
+# 10
 ## 14
 电脑坏了大半天。
 
@@ -262,3 +263,18 @@ public class CountdownLatchTest {
 * [禅道phpmysql](http://172.29.88.111:88/phpmyadmin)
 * [禅道入口](http://172.29.88.111:88/zentao)
 * [禅道文档](http://www.zentao.net/book/zentaopmshelp.html)
+
+# 11
+## 20
+
+### mysql 查询
+
+从上面的测试结果，可以看出如果in和or所在列有索引或者主键的话，or和in没啥差别，执行计划和执行时间都几乎一样。
+如果in和or所在列没有索引的话，性能差别就很大了。在没有索引的情况下，随着in或者or后面的数据量越多，
+in的效率不会有太大的下降，但是or会随着记录越多的话性能下降非常厉害。
+
+http://blog.chinaunix.net/uid-20639775-id-3416737.html
+
+## 21
+
+### BUG
