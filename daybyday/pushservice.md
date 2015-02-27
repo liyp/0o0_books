@@ -102,6 +102,18 @@ MQTT
 
 ### java-apns
 
+### GCM
+
+1. [google apis console](https://code.google.com/apis/console) 创建项目
+2. 打开GCM服务
+3. 获取一个API key
+  - project id: 714418754597 (GMsender ID)
+  - api key: AIzaSyDG6dNQV6jkOuNFJ0ke6mxNp0bfAib_dk0
+
+ref
+- http://www.cnblogs.com/zhwl/p/3370426.html
+- http://www.cnblogs.com/tamer/archive/2012/06/28/2568739.html
+
 ## 消息队列 MQ
 
 * [taobao mq](http://jm-blog.aliapp.com/?p=3483)
