@@ -100,19 +100,31 @@ MQTT
 
 [MQTT协议之moquette 安装使用](http://blog.csdn.net/zhu_tianwei/article/details/42983867)
 
-### java-apns
+### APNS
+
+java-apns
 
 ### GCM
 
-1. [google apis console](https://code.google.com/apis/console) 创建项目
-2. 打开GCM服务
-3. 获取一个API key
-  - project id: 714418754597 (GMsender ID)
-  - api key: AIzaSyDG6dNQV6jkOuNFJ0ke6mxNp0bfAib_dk0
-
 ref
-- http://www.cnblogs.com/zhwl/p/3370426.html
-- http://www.cnblogs.com/tamer/archive/2012/06/28/2568739.html
+  - http://www.cnblogs.com/zhwl/p/3370426.html
+  - http://www.cnblogs.com/tamer/archive/2012/06/28/2568739.html
+  - https://github.com/avram
+
+1. 注册得到 **API key**
+  1. [google apis console](https://code.google.com/apis/console) 创建项目
+  2. 打开GCM服务
+  3. 获取一个API key
+    - project id: 714418754597 (GMsender ID)
+    - api key: AIzaSyDG6dNQV6jkOuNFJ0ke6mxNp0bfAib_dk0
+
+2. 服务端
+  - 下载 [google engine sdk](https://cloud.google.com/appengine/downloads?hl=zh-CN#Google_App_Engine_SDK_for_Java)
+  - 服务端代码
+
+3. Android端
+
+
 
 ## 消息队列 MQ
 
