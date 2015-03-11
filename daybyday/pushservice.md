@@ -59,6 +59,12 @@ iOS应用则会在被切换到后台一段时间后停止运行，这时候如�
   * developer `openssl s_client -connect gateway.sandbox.push.apple.com:2195 -cert 下载证书生成的.pem -key p12生成的.pem`
   * production `openssl s_client -connect gateway.push.apple.com:2195 -cert 下载证书生成的.pem -key p12生成的.pem`
 
+### GCM
+
+### JDPushService
+
+
+
 ## 第三方包分析
 
 APNS 接入
@@ -132,6 +138,7 @@ ref
   * notify
   * MetaQ
 * Kafka
+* JeroMQ (ZMQ)
 
 ## TODO
 

@@ -34,3 +34,18 @@ java并发知识，学习多线程相关的容器、技术原理。
 
 ![原理图](http://p.blog.csdn.net/images/p_blog_csdn_net/liuzhengkang/EntryImages/20080912/58adc9e7b4725349c149a.jpg)
 [ConcurrentHashMap]: http://blog.csdn.net/liuzhengkang/article/details/2916620 "ConcurrentHashMap原理分析"
+
+## Executor
+
+>* [并发框架Executor](http://willsunforjava.iteye.com/blog/1631353)
+
+Executors类，提供了一系列工厂方法用于创先线程池，返回的线程池都实现了ExecutorService接口。
+
+- `public static ExecutorService newFixedThreadPool(int nThreads)`
+创建固定数目线程的线程池。
+- `public static ExecutorService newCachedThreadPool()`
+创建一个可缓存的线程池，调用`execute()`将重用以前构造的线程（如果线程可用）。如果现有线程没有可用的，则创建一个新线程并添加到池中。终止并从缓存中移除那些已有 60 秒钟未被使用的线程。
+- `public static ExecutorService newSingleThreadExecutor()`
+创建一个单线程化的Executor。
+- `public static ScheduledExecutorService newScheduledThreadPool(int corePoolSize)`
+创建一个支持定时及周期性的任务执行的线程池，多数情况下可用来替代Timer类。
