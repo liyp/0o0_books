@@ -82,7 +82,7 @@ class="org.springframework.oxm.jaxb.Jaxb2Marshaller">
 使用 @ReqeustMapping 注释的类或函数的 beans 由 Spring 处理
 这个注释将在下一节进行详细介绍。
 - Jaxb2Mashaller
-定义使用 JAXB 2 进行对象 XML 映射（OXM）的编组器（marshaller）和解组器（unmarshaller
+定义使用 JAXB 2 进行对象 XML 映射（OXM）的编组器（marshaller）和解组器（unmarshaller）
 - MashallingView
 定义一个使用 Jaxb2Mashaller 的 XML 表示 view
 - BeanNameViewResolver
@@ -258,3 +258,64 @@ PUT 方法类似于 POST。
 "<employee><id>3</id><name>guest3</name><email>guest3@ibm.com</employee>" 
 http://localhost:8080/rest/service/employee/3`
 上面的代码修改了 ID 为 3 的员工数据。
+
+## 请求静态资源问题
+
+[SpringMVC 静态资源访问](http://lzy83925.iteye.com/blog/1186609)
+
+多个HandlerMapping的执行顺序问题：
+
+DefaultAnnotationHandlerMapping的order属性值是：0
+
+<mvc:resources/ >自动注册的 SimpleUrlHandlerMapping的order属性值是： 2147483646
+ 
+<mvc:default-servlet-handler/>自动注册的SimpleUrlHandlerMapping的order属性值是：2147483647
+ 
+spring会先执行order值比较小的。当访问一个a.jpg图片文件时，先通过DefaultAnnotationHandlerMapping 来找处理器，一定是找不到的，我们没有叫a.jpg的Action。再按order值升序找，由于最后一个SimpleUrlHandlerMapping 是匹配"/**"的，所以一定会匹配上，再响应图片。
+ 
+访问一个图片，还要走层层匹配。真不知性能如何？
+ 
+最后再说明一下，如何你的DispatcherServlet拦截 *.do这样的URL，就不存上述问题了。
+
+### 1. 激活Tomcat的defaultServlet来处理静态文件
+
+```
+<servlet-mapping>
+    <servlet-name>default</servlet-name>
+    <url-pattern>*.jpg</url-pattern>
+</servlet-mapping>
+<servlet-mapping>
+    <servlet-name>default</servlet-name>
+    <url-pattern>*.js</url-pattern>
+</servlet-mapping>
+<servlet-mapping>
+    <servlet-name>default</servlet-name>
+    <url-pattern>*.css</url-pattern>
+</servlet-mapping>  
+```
+
+要写在DispatcherServlet的前面， 让defaultServlet先拦截，这个就不会进入Spring了。
+
+### 2.  在spring3.0.4以后版本提供了mvc:resources 
+
+<mvc:resources 的使用方法：
+
+<!--对静态资源文件的访问-->
+<mvc:resources mapping="/images/**" location="/images/" />
+  /images /**映射到 ResourceHttpRequestHandler 进行处理，location指定静态资源的位置.可以是web application根目录下、jar包里面，这样可以把静态资源压缩到jar包中。cache-period可以使得静态资源进行web cache  
+
+如果出现下面的错误，可能是没有配置 <mvc:annotation-driven /> 的原因。 
+报错WARNING: No mapping found for HTTP request with URI [/mvc/user/findUser/lisi/770] in DispatcherServlet with name 'springMVC'
+
+使用 <mvc:resources/> 元素,把 mapping 的 URI 注册到 SimpleUrlHandlerMapping的urlMap 中,
+key 为 mapping 的 URI pattern值,而 value为 ResourceHttpRequestHandler,
+这样就巧妙的把对静态资源的访问由 HandlerMapping 转到 ResourceHttpRequestHandler 处理并返回,所以就支持 classpath 目录, jar 包内静态资源的访问.
+另外需要注意的一点是,不要对 SimpleUrlHandlerMapping 设置 defaultHandler. 因为对 static uri 的 defaultHandler 就是ResourceHttpRequestHandler,
+否则无法处理static resources request.
+
+### 3. 使用`<mvc:default-servlet-handler/>`
+
+<mvc:default-servlet-handler/>  
+ 
+会把"/**" url,注册到SimpleUrlHandlerMapping的urlMap中,把对静态资源的访问由HandlerMapping转到 org.springframework.web.servlet.resource.DefaultServletHttpRequestHandler 处理并返回.
+DefaultServletHttpRequestHandler使用就是各个Servlet容器自己的默认Servlet.

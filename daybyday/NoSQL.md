@@ -1,6 +1,5 @@
 # NoSQL
 
-
 ## NoSQL benchmark
 
 [bankmark-nosql-benchmark](http://www.bankmark.de/wp-content/uploads/2014/12/bankmark-20141201-WP-NoSQLBenchmark.pdf)
@@ -16,6 +15,10 @@
 
 ## Cassandra
 
+### DataStruct
+
+Merkle tree
+
 ### reference
 
 Cassandra Blog
@@ -28,12 +31,12 @@ Cassandra官方文档
 [Cassandra21](http://docs.datastax.com/en/cassandra/2.1/cassandra/gettingStartedCassandraIntro.html)
 [Cassandra21.pdf](http://docs.datastax.com/en/cassandra/2.1/pdf/cassandra21.pdf)
 
-### spring-data-cassandra
+### ORM
 
-spring-data-c*  http://docs.spring.io/spring-data/cassandra/docs/1.2.0.RELEASE/reference/html/#cassandra.core
+[Kundera](https://github.com/impetus-opensource/Kundera) NoSQL ORM 框架
 
+[spring-data-c*](http://docs.spring.io/spring-data/cassandra/docs/1.2.0.RELEASE/reference/html/#cassandra.core)
 官方文档中给的例子是在`spring-data-c*-1.0.0`上，`ver > 1.2.0`提示`Exception`，暂未解决。
-
 > Exception in thread "main" java.lang.NoClassDefFoundError: org/springframework/core/DefaultParameterNameDiscoverer  
 > Caused by: java.lang.ClassNotFoundException: org.springframework.core.DefaultParameterNameDiscoverer
 
@@ -57,3 +60,7 @@ Twitter在把存储系统从MySQL迁移到Cassandra的过程中由于Cassandra�
 
 > MySQL UUID方案 Flicker : 采用了MySQL自增长ID的机制（auto_increment + replace into + MyISAM）。
 
+## Q&A
+
+一致性问题
+时间戳、版本号

@@ -278,3 +278,17 @@ http://blog.chinaunix.net/uid-20639775-id-3416737.html
 ## 21
 
 ### BUG
+
+# 2015.5
+
+这一年时间过去的好快啊！
+
+## 19
+
+持续2周多的时间，做一个基于BMap API中[BMap.RichMarker][]的地图应用，主要的问题集中在两个方面：
+
+1. JS 方面一些知识的不了解，特别是反射机制。还有本次用到的前端框架[Ext.js][] 的一些经验；
+2. Java SSH 方面，struts 的知识不太明了。
+
+[BMap.RichMarker](http://api.map.baidu.com/library/RichMarker/1.2/docs/symbols/BMapLib.RichMarker.html)
+[Ext.js](http://docs-origin.sencha.com/extjs/4.2.1/#)
