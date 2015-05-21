@@ -292,3 +292,16 @@ http://blog.chinaunix.net/uid-20639775-id-3416737.html
 
 [BMap.RichMarker](http://api.map.baidu.com/library/RichMarker/1.2/docs/symbols/BMapLib.RichMarker.html)
 [Ext.js](http://docs-origin.sencha.com/extjs/4.2.1/#)
+
+## 20
+
+一天就在提交Map的应用的CodeReview，配合Manager模块负责人更改些规范和习惯，合并到Manager中。
+
+发现一天的无所事事全都是由于无计划无目标的原因。缺少目的性就会让人彷徨失措。
+
+## 21
+
+还好这无聊的日子里可以听Huawei来的勇哥水水正规的软件开发流程。之前有开玩笑说勇哥三大宝，Huawei，存储，股票。 :-)
+
+一直想要把自己的推送模块代码写的更规范下，可是忽略很重要的地方。不该埋头自己死研，开阔眼界，多看看业界现有的经验，会给自己开发带来很多灵感和启发，自己拍脑袋想很傻！
+
