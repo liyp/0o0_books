@@ -1,6 +1,14 @@
 Python
 ==============
 
+学习Python，学习他人的经验积累。
+
+## 基础
+
+[Python学习笔记](https://github.com/qyuhen/book)  
+
+> Names have no type, but objects do.
+
 ## Q&A
 
 ### BOM问题 (utf8)
@@ -35,11 +43,13 @@ https://docs.python.org/2/library/codecs.html#encodings-and-unicode
 
 bom全称是：byte order mark，汉语意思是标记字节顺序码。只是出现在：unicode字符集中，只有unicode字符集，存储时候，要求指定编码，如果不指定，windows还会用默认的：ANSI读取。常见的bom头是：
 
-  UTF-8 ║ EF BB BF 
-  UTF-16LE ║ FF FE (小尾）
-  UTF-16BE ║ FE FF （大尾）
-  UTF-32LE ║ FF FE 00 00 
-  UTF-32BE ║ 00 00 FE FF
+编码  |  头字节
+----- | -----
+UTF-8 | EF BB BF 
+UTF-16LE | FF FE (小尾)
+UTF-16BE | FE FF (大尾)
+UTF-32LE | FF FE 00 00 
+UTF-32BE | 00 00 FE FF
 
 > unicode与utf-8 、utf-16 utf-32是什么关系？
 
@@ -49,3 +59,11 @@ unicode（统一码、万国码、单一码）是一种字符集，Unicode是国
 
 unicode编码特点是，它定义了编码方式和存储实现方式。编码方式就是上面说的可以用，utf-8…utf-32表示，而存储实现方式，无论那种编码都知道了文件头(bom)。因此，可以通过这个特殊头来判断存储的文本文件使用那种字符集编码。 
 
+### 开发规范
+
+[以正确的方式开源 Python 项目](http://www.oschina.net/translate/open-sourcing-a-python-project-the-right-way)  
+[Python风格规范](http://zh-google-styleguide.readthedocs.org/en/latest/google-python-styleguide/python_style_rules/)  
+
+
+* SheBang: 大部分.py文件不必以#!作为文件的开始。程序的main文件应该以`#!/usr/bin/python`开始.
+* 
