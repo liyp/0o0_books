@@ -1,5 +1,9 @@
 # APNS
 
+## cert
+
+[APNS远程推送证书的申请和制作——详细解析](http://my.oschina.net/u/1245365/blog/297913#OSC_h1_7)
+
 ## apns Payload
 
 - [APNS推送通知消息负载内容和本地格式字符串](http://www.cnblogs.com/taintain1984/p/3727440.html)
