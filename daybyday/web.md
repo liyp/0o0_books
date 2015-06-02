@@ -15,3 +15,10 @@ Java Web 的技术一些毛毛... SSH
 * JS里的回调，不懂JS
 * Ext.js框架的用法
 * css的图片处理 css sprites
+
+## web 容器
+
+什么是反向代理
+web容器 tomcat apache 都是什么原理
+
+[https原理及tomcat配置https方法](http://jingyan.baidu.com/article/a948d6515d3e850a2dcd2ee6.html)

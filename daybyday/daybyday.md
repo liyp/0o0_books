@@ -310,3 +310,45 @@ http://blog.chinaunix.net/uid-20639775-id-3416737.html
 ## 22 又到Friday
 
 我想该是要系统规划些了。
+
+## 26
+
+### url 中文编码/解码
+
+```java
+for (String enType : new String[] { "utf-8", "gbk","gb2312" }) {
+    String testString = "测试代码Code";
+    String urlStr = java.net.URLEncoder.encode(testString, enType);
+    System.out.println(enType);
+    System.out.println(urlStr);
+    System.out.println(java.net.URLDecoder.decode(urlStr, enType));
+}
+
+/* out
+utf-8
+%E6%B5%8B%E8%AF%95%E4%BB%A3%E7%A0%81Code
+测试代码Code
+gbk
+%B2%E2%CA%D4%B4%FA%C2%EBCode
+测试代码Code
+gb2312
+%B2%E2%CA%D4%B4%FA%C2%EBCode
+测试代码Code
+*/
+```
+
+字符串`测试代码Code`的各种URL编码方式
+
+encoding | url str
+-----    | -----
+utf-8    | %E6%B5%8B%E8%AF%95%E4%BB%A3%E7%A0%81Code
+gbk      | %B2%E2%CA%D4%B4%FA%C2%EBCode
+gb2312   | %B2%E2%CA%D4%B4%FA%C2%EBCode
+
+# 2015.6
+
+## 2
+
+java 序列化 `Serializable`
+
+序列化受到继承的影响，父类属性要被序列化需要实现`Serializable`
