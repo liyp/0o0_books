@@ -94,3 +94,10 @@ public class PushDAO extends CommonDAO {
 总结：Spring 注入的是接口，关联的是实现类。 这里注入了实现类，所以报异常了。
 使用cgilib来实现AOP，定义`proxy-target-class="true"`；`proxy-target-class`属性值决定是基于接口的还是基于类的代理被创建。
 如果`proxy-target-class`属性值被设置为`true`，那么基于类的代理被创建,产生的代理对象会`instanceof`原来的类。
+
+**切面的坑 CGLIB动态代理**  
+通AOP切到的方法，final方法无法被代理调用。
+
+那么`CGLIB`到底如何实现动态代理呢？
+
+http://my.oschina.net/tryUcatchUfinallyU/blog/121668
