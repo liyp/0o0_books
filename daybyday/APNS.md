@@ -1,8 +1,16 @@
 # APNS
 
-## cert
+## certificates
 
 [APNS远程推送证书的申请和制作——详细解析](http://my.oschina.net/u/1245365/blog/297913#OSC_h1_7)
+
+证书的申请流程  
+1. 申请本地证书
+2. 在开发者网站上申请证书 *.cer dev证书只用于指定测试设备
+3. x.cer -> y.p12 这里我就可以用了y.p12
+4. 制作pem证书 x.cer -> x-cer.pem; y.p12 -nocer-> y-key.pem; x-cer.pem + y-key.pem -> push.pem
+
+> 验证 `openssl s_client -connect gateway.sandbox.push.apple.com:2195 -cert x-cer.pem -key y-key.pem`
 
 ## apns Payload
 

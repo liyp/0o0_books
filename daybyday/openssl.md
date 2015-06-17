@@ -1,4 +1,56 @@
-# openssl
+OpenSSL
+=======
+
+实现了SSL与TLS协议。其主要库是以C语言所写成，实现了基本的加密功能。
+
+* 加密：
+AES、Blowfish、Camellia、SEED、CAST-128、DES、IDEA、RC2、RC4、RC5、Triple DES、GOST 28147-89
+* 散列函数：
+MD5、MD2、SHA-1、SHA-2、RIPEMD-160、MDC-2、GOST R 34.11-94
+* 公开密钥加密：
+RSA、DSA、Diffie–Hellman key exchange、 Elliptic curve、GOST R 34.10-2001
+
+## 证书格式
+
+- [openssl数字证书常见格式与协议介绍](http://blog.csdn.net/anxuegang/article/details/6157927)
+
+使用OpenSSL的时候经常会遇到如下的文件扩展名：.der, .pem, .csr, .key, .pfx, .p12。
+
+* **PEM**
+PEM格式通常用于数字证书认证机构（Certificate Authorities，CA），扩展名为.pem, .crt, .cer, .key。
+内容为Base64编码的ASCII码文件，有类似"-----BEGIN CERTIFICATE-----" 和 "-----END CERTIFICATE-----"的头尾标记。
+服务器认证证书，中级认证证书和私钥都可以储存为PEM格式（认证证书其实就是公钥）。Apache和类似的服务器使用PEM格式证书。
+
+* **DER**
+DER格式与PEM不同之处在于其使用二进制而不是Base64编码的ASCII。扩展名为.der，但也经常使用。
+.der用作扩展名，所有类型的认证证书和私钥都可以存储为DER格式。Java使其典型使用平台。
+
+* **PKCS#7/P7B**
+PKCS#7 或 P7B格式通常以Base64的格式存储，扩展名为.p7b 或 .p7c，有类似BEGIN PKCS7-----" 和 "-----END PKCS7-----"的头尾标记。
+PKCS#7 或 P7B只能存储认证证书或证书路径中的证书（就是存储认证证书链，本级，上级，到根级都存到一个文件中）。不能存储私钥，Windows和Tomcat都支持这种格式。
+
+* **PKCS#12/PFX**
+PKCS#12 或 PFX格式是以加密的二进制形式存储服务器认证证书，中级认证证书和私钥。扩展名为.pfx 和 .p12，PXF通常用于Windows中导入导出认证证书和私钥。
+
+PEM to DER
+`openssl x509 -outform der -in certificate.pem -out certificate.der`
+
+PEM to P7B
+`openssl crl2pkcs7 -nocrl -certfile certificate.cer -out certificate.p7b -certfile CACert.cer`
+
+PEM to PFX
+`openssl pkcs12 -export -out certificate.pfx -inkey privateKey.key -in certificate.crt -certfile CACert.crt`
+
+DER to PEM
+`openssl x509 -inform der -in certificate.cer -out certificate.pem`
+
+P7B to PEM
+`openssl pkcs7 -print_certs -in certificate.p7b -out certificate.cer`
+
+PFX to PEM
+`openssl pkcs12 -in certificate.pfx -out certificate.cer -nodes`
+
+> PXF转PEM后certificate.cer文件包含认证证书和私钥，需要把它们分开存储才能使用。
 
 ## pkcs12
 

@@ -352,3 +352,23 @@ gb2312   | %B2%E2%CA%D4%B4%FA%C2%EBCode
 java 序列化 `Serializable`
 
 序列化受到继承的影响，父类属性要被序列化需要实现`Serializable`
+
+## 11
+
+java读properties文件的时候，只认识ascii码，如\u4e00这种，不认识汉字。
+所以你properties文件的编码字符集只要包括ascii码就行，gbk,utf-8神马的都一样。
+另外native2ascii是把非ascii的转成unicode编码即UTF-16,不是utf-8。
+你需要用native2ascii工具把汉字转换成\u4e00这种形式。java程序读的时候，读到\u4e00这几个ascii码，然后把它用unicode编码解释。
+
+## 16
+
+### BMAP https
+
+在公司内网环境下，访问百度的https地图服务器有问题，导致https环境下的地图应用不正常。
+但是IE可以正常获取https百度地图的资源！可能和浏览器有关系。
+
+## 17
+
+推送证书问题，结果一个下午的时间都是浪费在为什么中！
+对openssl和一些常用的证书格式的不了解，导致思考不能集中。
+在linux服务器上验证证书的结果和MAC上居然不同。不明其理。
