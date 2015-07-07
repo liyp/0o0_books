@@ -9,6 +9,8 @@ Python
 
 > Names have no type, but objects do.
 
+**Duck Type**
+
 **名字空间** LEGB规则
 
 * L `locals`: 函数内部名字空间，包括局部变量和形参。
@@ -61,7 +63,22 @@ def fab(max):
         a, b = b, a + b 
         n = n + 1 
 ```
-> 仅仅把 print b 改为了 yield b，就在保持简洁性的同时获得了 iterable 的效果。
+> 仅仅把 `print b` 改为了 `yield b`，就在保持简洁性的同时获得了 iterable 的效果。
+
+**iterator**
+
+> 迭代器协议，仅需要 `__iter__()` 和 `next()` 两个方法。（"Duck Type"）前者返回迭代器对象，后者依次返回数据，直到引发 `StopIteration` 异常结束。
+
+> 内置函数 `iter()` 返回常用类型的迭代器包装对象
+
+> 使用`yield` 返回实现了迭代器协议的 Generator 对象
+
+**coroutine** 协程
+
+> 虽然生成器 yield 能轻松实现协程机制，但离真正意义上的高并发还有不小的距离。可以考虑使用成熟的第三方库，比如 gevent/eventlet，或直接用 greenlet。
+
+
+
 
 ## Q&A
 
