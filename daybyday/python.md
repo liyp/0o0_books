@@ -9,6 +9,60 @@ Python
 
 > Names have no type, but objects do.
 
+**名字空间** LEGB规则
+
+* L `locals`: 函数内部名字空间，包括局部变量和形参。
+* E `enclosing function`: 外部嵌套函数的名字空间。
+* G `globals`: 函数定义所在模块的名字空间。
+* B `__builtins__`: 内置模块的名字空间。
+
+> python 3 提供`nonlocal` 修改外部嵌套函数名字空间
+> locals FAST区域优化。 使用`exec`可解决
+> global 编译期作用域不受执行期条件影响
+
+**闭包** closure
+
+> 函数离开创建环境，依然持有其上下文关系。
+
+**yield**
+
+[python-yield](http://www.ibm.com/developerworks/cn/opensource/os-cn-python-yield/)
+
+> yield 的作用就是把一个函数变成一个 generator，带有 yield 的函数不再是一个普通函数，Python 解释器会将其视为一个 generator。
+> yield 的好处是显而易见的，把一个函数改写为一个 generator 就获得了迭代能力，比起用类的实例保存状态来计算下一个 next() 的值，不仅代码简洁，而且执行流程异常清晰。
+
+比较清晰的例子：
+
+```python
+class Fab(object): 
+
+    def __init__(self, max): 
+        self.max = max 
+        self.n, self.a, self.b = 0, 0, 1 
+
+    def __iter__(self): 
+        return self 
+
+    def next(self): 
+        if self.n < self.max: 
+            r = self.b 
+            self.a, self.b = self.b, self.a + self.b 
+            self.n = self.n + 1 
+            return r 
+        raise StopIteration()
+```
+
+```python
+def fab(max): 
+    n, a, b = 0, 0, 1 
+    while n < max: 
+        yield b 
+        # print b 
+        a, b = b, a + b 
+        n = n + 1 
+```
+> 仅仅把 print b 改为了 yield b，就在保持简洁性的同时获得了 iterable 的效果。
+
 ## Q&A
 
 ### BOM问题 (utf8)
@@ -66,4 +120,11 @@ unicode编码特点是，它定义了编码方式和存储实现方式。编码�
 
 
 * SheBang: 大部分.py文件不必以#!作为文件的开始。程序的main文件应该以`#!/usr/bin/python`开始.
-* 
+
+### 尾递归优化 Tail Call Optimization
+
+[TCO-zhuhu](http://www.zhihu.com/question/20761771/answer/19996299)
+[what-is-TCO](https://stackoverflow.com/questions/310974/what-is-tail-call-optimization)
+
+> python (java/c#) 不能进行 TCO 。 最大深度 `sys.getrecursionlimit()` 1000?
+

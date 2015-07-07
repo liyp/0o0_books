@@ -401,3 +401,20 @@ assert比较适合于被频繁调用的 基类，框架代码，工具类，核�
 Java较少使用assert的原因是Java有很完整的OO体系，强制类型转换出现得较少，所以不需要类似c那样需要频繁的检查指针的类型是否正确，指针是否为空。同时Java也很少直接管理内存或缓冲区，所以不需要频繁的检查传入的缓冲区是否为空或者是已经越界。
 
 但使用好assert有助于提高框架代码的正确性和减少框架代码的使用者的调试时间。
+
+## 2015.7.2
+
+**vim 换行符**
+
+命令  | xx
+----- | -----
+:set fileformat | 设置文件格式
+:set endofline | 设置文件结束符
+:set noendofline | 取消文件结束符
+:set list | 进入List Mode
+:set nolist | 退出List Mode
+:%s/\n//g | 删除换行符
+:set textwidth | 设置行宽
+:set textwidth | 设置行边距
+:join | 合并多行
+J | 合并两行
