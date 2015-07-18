@@ -77,8 +77,17 @@ def fab(max):
 
 > 虽然生成器 yield 能轻松实现协程机制，但离真正意义上的高并发还有不小的距离。可以考虑使用成熟的第三方库，比如 gevent/eventlet，或直接用 greenlet。
 
+```python
+# send(None)/next() 启动
+#
 
-
+def coroutine():
+    print("coroutine start...")
+    result = None
+    while True:
+        s = yield result
+        result = s.split(",")
+```
 
 ## Q&A
 
