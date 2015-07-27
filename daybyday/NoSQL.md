@@ -40,8 +40,9 @@ Cassandra官方文档
 > Exception in thread "main" java.lang.NoClassDefFoundError: org/springframework/core/DefaultParameterNameDiscoverer  
 > Caused by: java.lang.ClassNotFoundException: org.springframework.core.DefaultParameterNameDiscoverer
 
+## Q&A
 
-### xxx to cassandra migration
+**xxx to cassandra migration**
 
 UUID 问题
 
@@ -60,7 +61,14 @@ Twitter在把存储系统从MySQL迁移到Cassandra的过程中由于Cassandra�
 
 > MySQL UUID方案 Flicker : 采用了MySQL自增长ID的机制（auto_increment + replace into + MyISAM）。
 
-## Q&A
+**datastax-java-driver**  
 
+`ver = 2.1.5`
+
+Object-mapping API 问题
+
+使用cassandra java driver 时，取Bean 是使用Row 列位置映射的方式，动态添加列会使 Row 列位置错位，导致映射的 Bean 属性是错误的。
+
+**other**
 一致性问题
 时间戳、版本号

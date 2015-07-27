@@ -432,3 +432,44 @@ logger 参数
 %d 输出日志时间点的日期或时间，默认格式为ISO8601，也可以在其后指定格式，比如：%d{yyy MMM dd HH:mm:ss,SSS}，输出类似：2002年10月18日 22：10：28，921
 %l 输出日志事件的发生位置，包括类目名、发生的线程，以及在代码中的行数。
 ```
+## 2015.7.14
+
+**DUBBO**
+
+## 2015.7.20
+
+**maven**
+
+maven-surefire-plugin 测试插件，`src/test/java`中的XML不能被编译加入到`target/test-classes`中，导致单元测试失败。
+
+```xml
+</build>
+    <resources>
+        <resource>
+            <directory>
+                src/main/java
+            </directory>
+            <excludes>
+                <exclude>**/*.java</exclude>
+                <exclude>**/.svn/*</exclude>
+            </excludes>
+        </resource>
+        <resource>
+            <directory>src/main/resources</directory>
+        </resource>
+    </resources>
+    <testResources>
+        <testResource>
+            <directory>
+                src/test/java
+            </directory>
+            <includes>
+                <include>**/*.xml</include>
+            </includes>
+        </testResource>
+        <testResource>
+            <directory>src/test/resources</directory>
+        </testResource>
+    </testResources>
+</build>
+```

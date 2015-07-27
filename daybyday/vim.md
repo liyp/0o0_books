@@ -1,6 +1,22 @@
 VIM
 ===
 
+### 命令
+
+命令  | xx
+----- | -----
+:set fileformat | 设置文件格式
+:set endofline | 设置文件结束符
+:set noendofline | 取消文件结束符
+:set list | 进入List Mode
+:set nolist | 退出List Mode
+:%s/\n//g | 删除换行符
+:set textwidth | 设置行宽
+:set textwidth | 设置行边距
+:join | 合并多行
+J | 合并两行
+
+
 ### plugin
 
 * [pathogen](https://github.com/tpope/vim-pathogen)
