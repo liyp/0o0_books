@@ -71,5 +71,5 @@ filetype plugin indent on    " required
 
 ### autocompletion
 
-* python 
+* python
     - [jedi-vim](https://github.com/davidhalter/jedi-vim)
