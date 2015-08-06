@@ -19,8 +19,6 @@ REF
 ## 调研目前现存的PNS
 
 * [Amazon Simple Notification Service](http://docs.aws.amazon.com/zh_cn/sns/latest/dg/welcome.html)
-*
-
 
 ### Amazon SNS
 
@@ -37,33 +35,18 @@ Amazon Simple Notification Service (Amazon SNS) 是一项 Web 服务，用于协
 
 ### APNS
 
+> 详见 `push-apns.md`
+
 iOS应用则会在被切换到后台一段时间后停止运行，这时候如果想要达到信息的获取则只能依靠APNS（Apple Push Notification Service），由服务器主动进行推送。
 
-由于APNS最高只支持256个字节的消息体，并且推送消息中大量重复的内容也会造成流量成本，这时可以使用本地化字符串。本地化字符串是在客户端中的Localizable.strings文件中定义一对键值对，服务器只需要提供指定字符串的键和动态生成的参数即可生成一条完整的推送消息。
+由于APNS最高只支持256个字节的消息体，并且推送消息中大量重复的内容也会造成流量成本，这时可以使用本地化字符串。
+本地化字符串是在客户端中的Localizable.strings文件中定义一对键值对，服务器只需要提供指定字符串的键和动态生成的参数即可生成一条完整的推送消息。
 
 并不是每条消息都绝对会推送成功。例如当用户卸载掉该应用时，所对应的token就已经失效了，这时可以通过service（java-apns）的getInactiveDevices方法获得失效的token并作出处理。
-
-#### 开发流程
-
-[APNS远程推送证书的申请和制作——详细解析](http://my.oschina.net/u/1245365/blog/297913#OSC_h1_3)
-
-所需证书申请：
-1. 申请本地证书  **CSR**
-2. 在开发者网站上申请证书 **Apple Push Notifications service SSL Certificates**
-3. 申请描述文件（开发和发布描述文件） **.CER**
-4. 为服务器制作证书 **.pem + 密码**
-  * .p12  `openssl x509 -in 证书名字.cer -inform der -out push_developer_cer.pem`
-  * pushKey.pem `openssl pkcs12 -nocerts -out pushKey.pem -in p12名字.p12`
-  * 最终.pem `cat 下载证书生成的.pem p12生成的.pem > 最终证书的名字.pem`
-5. 测试证书是否有效
-  * developer `openssl s_client -connect gateway.sandbox.push.apple.com:2195 -cert 下载证书生成的.pem -key p12生成的.pem`
-  * production `openssl s_client -connect gateway.push.apple.com:2195 -cert 下载证书生成的.pem -key p12生成的.pem`
 
 ### GCM
 
 ### JDPushService
-
-
 
 ## 第三方包分析
 

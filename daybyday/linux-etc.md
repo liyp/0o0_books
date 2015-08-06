@@ -58,3 +58,30 @@ Year | NO | empty, 1970-2099 | , - * /
 
 `#` - used to specify "the nth" XXX day of the month. For example, the value of "6#3" in the day-of-week field means "the third Friday of the month" (day 6 = Friday and "#3" = the 3rd one in the month). Other examples: "2#1" = the first Monday of the month and "4#5" = the fifth Wednesday of the month. Note that if you specify "#5" and there is not 5 of the given day-of-week in the month, then no firing will occur that month.
 > The legal characters and the names of months and days of the week are not case sensitive. MON is the same as mon.
+
+### ssh
+
+```bash
+# 复制SSH密钥到目标主机，开启无密码SSH登录
+ssh-copy-id user@host
+# or
+cat ~/.ssh/id_rsa.pub | ssh user@machine “mkdir ~/.ssh; cat >> ~/.ssh/authorized_keys”
+
+# 从某主机的80端口开启到本地主机2001端口的隧道
+ssh -N -L2001:localhost:80 somemachine
+
+# 将你的麦克风输出到远程计算机的扬声器
+dd if=/dev/dsp | ssh -c arcfour -C username@host dd of=/dev/dsp
+
+# 比较远程和本地文件
+ssh user@host cat /path/to/remotefile | diff /path/to/localfile –
+
+# 通过SSH挂载目录/文件系统
+sshfs name@server:/path/to/folder /path/to/mount/point
+
+# 通过中间主机建立SSH连接
+ssh -t reachable_host ssh unreachable_host
+
+# 通过SSH运行复杂的远程shell命令
+ssh host -l user “`cat cmd.txt`”
+```
