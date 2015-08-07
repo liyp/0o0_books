@@ -46,6 +46,36 @@ y5G：将当前行（包括当前行）至第5行（不包括它）复制
 y3B：从当前光标位置（不包括光标位置）反向复制3个单词
 ```
 
+**diff**
+```sh
+
+vimdiff  FILE_LEFT  FILE_RIGHT
+
+vim -d  FILE_LEFT  FILE_RIGHT
+
+vim FILE_LEFT
+# 在vim的ex模式
+:vertical diffsplit FILE_RIGHT
+#
+:set noscrollbind
+#
+]c
+#
+[c
+#
+dp （diff "put"）
+#
+do (diff "get"，之所以不用dg，是因为dg已经被另一个命令占用了)
+#
+:diffupdate
+
+# 如果希望修改缺省的上下文行数，可以这样设置
+:set diffopt=context:3
+
+zo
+zc
+
+```
 
 ### plugin
 
