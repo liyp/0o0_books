@@ -22,3 +22,7 @@ $ git push origin develop
 > [git-merg](git-scm.com/docs/git-merge)
 
 ## reflog
+
+## other
+
+[Mercurial SCM](https://mercurial.selenic.com)（轻量级分布式版本控制系统）

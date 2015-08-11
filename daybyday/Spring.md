@@ -100,4 +100,6 @@ public class PushDAO extends CommonDAO {
 
 那么`CGLIB`到底如何实现动态代理呢？
 
-http://my.oschina.net/tryUcatchUfinallyU/blog/121668
+[JDK&CGLIB动态代理的实现与案例](http://my.oschina.net/tryUcatchUfinallyU/blog/121668)
+
+[比较分析 Spring AOP 和 AspectJ 之间的差别](http://www.oschina.net/translate/comparative_analysis_between_spring_aop_and_aspectj)

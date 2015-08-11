@@ -1,6 +1,5 @@
 # GCM
 
-
 [Google Cloud Messaging - Getting Started](http://www.android-doc.com/guide/google/gcm/gs.html)
 
 [Android推送服务(GCM)-GCM Architectural Overview翻译](http://blog.csdn.net/junjieking/article/details/8443830)
