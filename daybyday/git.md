@@ -25,4 +25,4 @@ $ git push origin develop
 
 ## other
 
-[Mercurial SCM](https://mercurial.selenic.com)（轻量级分布式版本控制系统）
+[Mercurial](https://mercurial.selenic.com)（轻量级分布式版本控制系统）
