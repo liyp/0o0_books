@@ -1,6 +1,14 @@
 Linux ETC
 =========
 
+## linux theory
+
+### process
+
+> [理解linux进程](defrur.gitbooks.io/introduction-to-process) **未完成**
+
+## linux tools
+
 ### ZSH
 
 * [zsh-zhihu](http://zhuanlan.zhihu.com/mactalk/19556676)
@@ -61,7 +69,8 @@ Year | NO | empty, 1970-2099 | , - * /
 
 ### ssh
 
-```bash
+```
+
 # 复制SSH密钥到目标主机，开启无密码SSH登录
 ssh-copy-id user@host
 # or
@@ -106,3 +115,14 @@ mysqldump –add-drop-table –extended-insert –force –log-error=error.log -
 yes | pv | ssh $host “cat > /dev/null”
 
 ```
+
+### 大括号 `{}`扩展
+
+cp /etc/httpd/httpd.{,.bakup}
+
+mv resume{z,}.doc
+
+> Brace expansion(大括号扩展或叫做花括号扩展) 是用来随机产生字符串组合的机制。这种机制类似于文件的扩展名，但是并不需要存在响应的文件。
+Brace expansion(大括号扩展或叫做花括号扩展)模式是一可选的preamble(前导字符)，后面跟着一系列逗号分隔的字符串，包含在一对花括号中，
+再后面是一个可选的postscript(打印编程语言)。preamble(前导字符)被添加到花括号中的每个字符串前面，postscript(打印编程语言)被附加到每个结果字符串之后，
+从左到右进行扩展。花括号扩展可以嵌套。扩展字符串的结果没有排序；而是保留了从左到右的顺序。

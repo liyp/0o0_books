@@ -24,6 +24,9 @@
   * developer `openssl s_client -connect gateway.sandbox.push.apple.com:2195 -cert 下载证书生成的.pem -key p12生成的.pem`
   * production `openssl s_client -connect gateway.push.apple.com:2195 -cert 下载证书生成的.pem -key p12生成的.pem`
 
+> pem -> p12
+> `openssl pkcs12 -export -in apns_dev.pem -out paypal.p12`
+
 ## apns Payload
 
 - [APNS推送通知消息负载内容和本地格式字符串](http://www.cnblogs.com/taintain1984/p/3727440.html)
