@@ -17,3 +17,50 @@ LOG
 * Slf4j - SLF4J是为各种Logging API提供一个简单统一的接口），从而使用户能够在部署的时候配置自己希望的Logging API实现；
 * Apache Commons Logging - Apache Commons Logging （JCL）希望解决的问题和Slf4j类似。
 选项太多了的后果就是选择困难症，我的看法是没有最好的，只有最合适的。在比较关注性能的地方，选择Logback或自己实现高性能Logging API可能更合适；在已经使用了Log4j的项目中，如果没有发现问题，继续使用可能是更合适的方式；我一般会在项目里选择使用Slf4j, 如果不想有依赖则使用java.util.logging或框架容器已经提供的日志接口。
+
+### 格式
+
+log4j.appender.rollingfile.layout.ConversionPattern=[%d] [%-5p] [%t] [%F:%L] - %m%n
+```
+说明：
+%d：时间，精确到毫秒
+%p：日志级别
+%t：线程名
+%F:%L：类名与行号
+%m：输出代码中日志的具体信息
+%n：换行
+打印出来效果：
+[2015-08-20 12:51:23,677] [INFO ] [main] [AppServer.java:73] - Starting 3 services.
+[2015-08-20 12:51:23,681] [INFO ] [main] [DubboService.java:43] - Starting dubbo services
+[2015-08-20 12:51:25,232] [INFO ] [main] [NettyService.java:59] - Starting netty service  on port 50553
+[2015-08-20 12:51:25,309] [INFO ] [main] [SocketService.java:34] - Starting socket service  on socketPort 50554
+[2015-08-20 12:51:25,310] [INFO ] [main] [AppServer.java:79] - Startup completed in 1629 ms.
+```
+**template**
+```
+log4j.rootLogger=INFO,rollingfile
+log4j.addivity.org.apache=true
+
+log4j.logger.com.tplink.cloud=debug
+
+log4j.appender.stdout=org.apache.log4j.ConsoleAppender
+log4j.appender.stdout.layout=org.apache.log4j.PatternLayout
+log4j.appender.stdout.layout.ConversionPattern=[%d] [%-5p] [%t] [%F:%L] - %m%n
+
+log4j.appender.rollingfile=org.apache.log4j.RollingFileAppender
+log4j.appender.rollingfile.file=logs/cloud.log
+log4j.appender.rollingfile.append=true
+log4j.appender.rollingfile.maxBackupIndex=20
+log4j.appender.rollingfile.maxFileSize=20MB
+#log4j.appender.rollingfile.bufferedIO=true
+#log4j.appender.rollingfile.bufferSize=8192
+log4j.appender.rollingfile.layout=org.apache.log4j.PatternLayout
+log4j.appender.rollingfile.layout.ConversionPattern=[%d] [%-5p] [%t] [%F:%L] - %m%n
+```
+
+cloud-pushservice
+接收到dispatcher的invoke处：Analysis.recv.dispatcher:$req, size:$,...
+返回消息的入口处：Analysis.send. dispatcher:$rsp,...
+
+给dispatcher发送消息：Analysis.send. dispatcher:$rep,...
+收到dispatcher返回的消息：Analysis.recv. dispatcher:$rsp,..
