@@ -5,7 +5,8 @@ Linux ETC
 
 ### process
 
-> [理解linux进程](defrur.gitbooks.io/introduction-to-process) **未完成**
+* [理解linux进程](defrur.gitbooks.io/introduction-to-process) **未完成**
+* [Linux 技巧：让进程在后台可靠运行的几种方法](https://www.ibm.com/developerworks/cn/linux/l-cn-nohup/)
 
 ## linux tools
 
@@ -29,7 +30,7 @@ Linux ETC
 
 ### tmux
 
-### cron
+### crontab
 
 http://www.quartz-scheduler.org/documentation/quartz-1.x/tutorials/crontrigger
 
@@ -116,7 +117,7 @@ yes | pv | ssh $host “cat > /dev/null”
 
 ```
 
-### 大括号 `{}`扩展
+### `{}`扩展
 
 cp /etc/httpd/httpd.{,.bakup}
 

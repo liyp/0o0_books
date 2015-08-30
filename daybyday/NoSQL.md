@@ -1,4 +1,7 @@
-# NoSQL
+NoSQL
+=====
+
+* [NoSQL Notes](http://www.nosqlnotes.net)
 
 ## NoSQL benchmark
 
