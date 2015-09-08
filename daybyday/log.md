@@ -1,6 +1,8 @@
 LOG
 ==============
 
+## 简述+扯淡
+
 - [最佳日志实践](http://www.bitstech.net/2014/01/07/log-best-practice/)
 
 对于 **日志级别** 的分类，有以下参考：
@@ -18,7 +20,7 @@ LOG
 * Apache Commons Logging - Apache Commons Logging （JCL）希望解决的问题和Slf4j类似。
 选项太多了的后果就是选择困难症，我的看法是没有最好的，只有最合适的。在比较关注性能的地方，选择Logback或自己实现高性能Logging API可能更合适；在已经使用了Log4j的项目中，如果没有发现问题，继续使用可能是更合适的方式；我一般会在项目里选择使用Slf4j, 如果不想有依赖则使用java.util.logging或框架容器已经提供的日志接口。
 
-### 格式
+### 配置文件+格式
 
 log4j.appender.rollingfile.layout.ConversionPattern=[%d] [%-5p] [%t] [%F:%L] - %m%n
 ```
@@ -64,3 +66,6 @@ cloud-pushservice
 
 给dispatcher发送消息：Analysis.send. dispatcher:$rep,...
 收到dispatcher返回的消息：Analysis.recv. dispatcher:$rsp,..
+
+> 使配置文件生效方法：
+> `java -Dlog4j.configuration=/path/to/file`

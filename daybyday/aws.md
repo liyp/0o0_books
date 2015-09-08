@@ -9,6 +9,7 @@ AWS 在中国（北京）区域和其他地区是隔离的。
 * ...
 
 DOC
+- ALL SERVICES DOC http://docs.amazonaws.cn/aws/latest/userguide/services.html
 - 区域和终端节点 http://docs.amazonaws.cn/general/latest/gr/rande.html
 
 ### Amazon Kinesis
@@ -52,7 +53,7 @@ Amazon Simple Queue Service (Amazon SQS) 提供了可靠且高度可扩展的托
 
 #### sdk API
 
-* https://github.com/aws/aws-sdk-java
+* [aws-sdk-java](https://github.com/aws/aws-sdk-java)
 * http://docs.aws.amazon.com/zh_cn/AWSSdkDocsJava/latest/DeveloperGuide/
 * https://docs.amazonaws.cn/kinesis/latest/dev/introduction.html
 
