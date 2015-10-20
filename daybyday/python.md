@@ -36,32 +36,32 @@ Python
 比较清晰的例子：
 
 ```python
-class Fab(object): 
+class Fab(object):
 
-    def __init__(self, max): 
-        self.max = max 
-        self.n, self.a, self.b = 0, 0, 1 
+    def __init__(self, max):
+        self.max = max
+        self.n, self.a, self.b = 0, 0, 1
 
-    def __iter__(self): 
-        return self 
+    def __iter__(self):
+        return self
 
-    def next(self): 
-        if self.n < self.max: 
-            r = self.b 
-            self.a, self.b = self.b, self.a + self.b 
-            self.n = self.n + 1 
-            return r 
+    def next(self):
+        if self.n < self.max:
+            r = self.b
+            self.a, self.b = self.b, self.a + self.b
+            self.n = self.n + 1
+            return r
         raise StopIteration()
 ```
 
 ```python
-def fab(max): 
-    n, a, b = 0, 0, 1 
-    while n < max: 
-        yield b 
-        # print b 
-        a, b = b, a + b 
-        n = n + 1 
+def fab(max):
+    n, a, b = 0, 0, 1
+    while n < max:
+        yield b
+        # print b
+        a, b = b, a + b
+        n = n + 1
 ```
 > 仅仅把 `print b` 改为了 `yield b`，就在保持简洁性的同时获得了 iterable 的效果。
 
@@ -88,6 +88,18 @@ def coroutine():
         s = yield result
         result = s.split(",")
 ```
+
+## 工程
+
+### 风格
+
+1. 起始行
+2. 模块文档
+3. 模块导入
+4. 全局变量定义
+5. 类定义
+6. 函数定义
+7. 主程序
 
 ## Q&A
 
@@ -125,10 +137,10 @@ bom全称是：byte order mark，汉语意思是标记字节顺序码。只是�
 
 编码  |  头字节
 ----- | -----
-UTF-8 | EF BB BF 
+UTF-8 | EF BB BF
 UTF-16LE | FF FE (小尾)
 UTF-16BE | FE FF (大尾)
-UTF-32LE | FF FE 00 00 
+UTF-32LE | FF FE 00 00
 UTF-32BE | 00 00 FE FF
 
 > unicode与utf-8 、utf-16 utf-32是什么关系？
@@ -137,7 +149,7 @@ unicode（统一码、万国码、单一码）是一种字符集，Unicode是国
 
 > unicode编码特点是什么？
 
-unicode编码特点是，它定义了编码方式和存储实现方式。编码方式就是上面说的可以用，utf-8…utf-32表示，而存储实现方式，无论那种编码都知道了文件头(bom)。因此，可以通过这个特殊头来判断存储的文本文件使用那种字符集编码。 
+unicode编码特点是，它定义了编码方式和存储实现方式。编码方式就是上面说的可以用，utf-8…utf-32表示，而存储实现方式，无论那种编码都知道了文件头(bom)。因此，可以通过这个特殊头来判断存储的文本文件使用那种字符集编码。
 
 ### 开发规范
 
@@ -153,4 +165,3 @@ unicode编码特点是，它定义了编码方式和存储实现方式。编码�
 [what-is-TCO](https://stackoverflow.com/questions/310974/what-is-tail-call-optimization)
 
 > python (java/c#) 不能进行 TCO 。 最大深度 `sys.getrecursionlimit()` 1000?
-

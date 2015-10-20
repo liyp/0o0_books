@@ -8,6 +8,11 @@ Linux ETC
 * [理解linux进程](defrur.gitbooks.io/introduction-to-process) **未完成**
 * [Linux 技巧：让进程在后台可靠运行的几种方法](https://www.ibm.com/developerworks/cn/linux/l-cn-nohup/)
 
+## linux etc
+
+在公司的电脑上安装ubuntu，配置自己的开发环境。
+
+
 ## linux tools
 
 ### ZSH

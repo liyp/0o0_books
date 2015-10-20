@@ -479,3 +479,18 @@ maven-surefire-plugin 测试插件，`src/test/java`中的XML不能被编译加�
 * 上层业务代码真是和底层完全脱离，机械考虑业务即可“完成”工作。但是太老年化了。多了解底层原理，尽可能了解所调用的API的实现，才不会沦为**
 * 讨厌的面子氛围，自己也要注意，算是个“尊重”吧。可以免除人身伤害。
 * 自己遇到的问题，特别是和其他模块有交互的，要多讨论，不要自己埋头。
+
+## 2015.10.10
+
+开始遇到的奇葩绽放的...
+
+* Actor模型 AKKA Scala
+* ZeroMQ
+* LAMX Disruptor
+
+## 2015.10.16
+
+- [Citrix Receiver for linux -- Ref Guide ](https://www.citrix.com/content/dam/citrix/en_us/documents/downloads/citrix-receiver/linux-oem-guide-13-1.pdf)
+- [Citrix intsall into ubuntu](https://help.ubuntu.com/community/CitrixICAClientHowTo)
+
+全屏的问题解决方法： `vim ~/.ICAClient/All_Regions.ini` and `setting DesiredHRES=1366 and DesiredVRES=768`

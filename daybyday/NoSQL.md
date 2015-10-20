@@ -75,3 +75,42 @@ Object-mapping API 问题
 **other**
 一致性问题
 时间戳、版本号
+
+### cassandra tombstone_failure_threshold
+
+system.log 中出现如下异常。(执行大量delete操作后，100k->2k的程度)
+
+```
+WARN  [SharedPool-Worker-2] 2015-09-28 16:03:30,780 SliceQueryFilter.java:242 - Read 2968 live and 5934 tombstoned cells in cloud.push_app_task (see tombstone_warn_threshold). 5001 columns was requested, slices=[4_1433132231_0002232786FA_506_00eebd999772:time-]
+ERROR [SharedPool-Worker-2] 2015-09-28 16:03:31,729 SliceQueryFilter.java:218 - Scanned over 100000 tombstones in cloud.push_app_task; query aborted (see tombstone_failure_threshold)
+WARN  [SharedPool-Worker-2] 2015-09-28 16:03:31,736 AbstractTracingAwareExecutorService.java:169 - Uncaught exception on thread Thread[SharedPool-Worker-2,5,main]: {}
+java.lang.RuntimeException: org.apache.cassandra.db.filter.TombstoneOverwhelmingException
+        at org.apache.cassandra.service.StorageProxy$DroppableRunnable.run(StorageProxy.java:2182) ~[apache-cassandra-2.1.5.jar:2.1.5]
+        at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:471) ~[na:1.7.0_60]
+        at org.apache.cassandra.concurrent.AbstractTracingAwareExecutorService$FutureTask.run(AbstractTracingAwareExecutorService.java:164) ~[apache-cassandra-2.1.5.jar:2.1.5]
+        at org.apache.cassandra.concurrent.SEPWorker.run(SEPWorker.java:105) [apache-cassandra-2.1.5.jar:2.1.5]
+        at java.lang.Thread.run(Thread.java:745) [na:1.7.0_60]
+Caused by: org.apache.cassandra.db.filter.TombstoneOverwhelmingException: null
+        at org.apache.cassandra.db.filter.SliceQueryFilter.collectReducedColumns(SliceQueryFilter.java:220) ~[apache-cassandra-2.1.5.jar:2.1.5]
+        at org.apache.cassandra.db.filter.QueryFilter.collateColumns(QueryFilter.java:107) ~[apache-cassandra-2.1.5.jar:2.1.5]
+        at org.apache.cassandra.db.filter.QueryFilter.collateOnDiskAtom(QueryFilter.java:81) ~[apache-cassandra-2.1.5.jar:2.1.5]
+        at org.apache.cassandra.db.RowIteratorFactory$2.getReduced(RowIteratorFactory.java:99) ~[apache-cassandra-2.1.5.jar:2.1.5]
+        at org.apache.cassandra.db.RowIteratorFactory$2.getReduced(RowIteratorFactory.java:71) ~[apache-cassandra-2.1.5.jar:2.1.5]
+        at org.apache.cassandra.utils.MergeIterator$ManyToOne.consume(MergeIterator.java:117) ~[apache-cassandra-2.1.5.jar:2.1.5]
+        at org.apache.cassandra.utils.MergeIterator$ManyToOne.computeNext(MergeIterator.java:100) ~[apache-cassandra-2.1.5.jar:2.1.5]
+        at com.google.common.collect.AbstractIterator.tryToComputeNext(AbstractIterator.java:143) ~[guava-16.0.jar:na]
+        at com.google.common.collect.AbstractIterator.hasNext(AbstractIterator.java:138) ~[guava-16.0.jar:na]
+        at org.apache.cassandra.db.ColumnFamilyStore$8.computeNext(ColumnFamilyStore.java:2006) ~[apache-cassandra-2.1.5.jar:2.1.5]
+        at org.apache.cassandra.db.ColumnFamilyStore$8.computeNext(ColumnFamilyStore.java:2002) ~[apache-cassandra-2.1.5.jar:2.1.5]
+        at com.google.common.collect.AbstractIterator.tryToComputeNext(AbstractIterator.java:143) ~[guava-16.0.jar:na]
+        at com.google.common.collect.AbstractIterator.hasNext(AbstractIterator.java:138) ~[guava-16.0.jar:na]
+        at org.apache.cassandra.db.ColumnFamilyStore.filter(ColumnFamilyStore.java:2157) ~[apache-cassandra-2.1.5.jar:2.1.5]
+        at org.apache.cassandra.db.ColumnFamilyStore.getRangeSlice(ColumnFamilyStore.java:2115) ~[apache-cassandra-2.1.5.jar:2.1.5]
+        at org.apache.cassandra.db.PagedRangeCommand.executeLocally(PagedRangeCommand.java:115) ~[apache-cassandra-2.1.5.jar:2.1.5]
+        at org.apache.cassandra.service.StorageProxy$LocalRangeSliceRunnable.runMayThrow(StorageProxy.java:1516) ~[apache-cassandra-2.1.5.jar:2.1.5]
+        at org.apache.cassandra.service.StorageProxy$DroppableRunnable.run(StorageProxy.java:2179) ~[apache-cassandra-2.1.5.jar:2.1.5]
+        ... 4 common frames omitted
+```
+
+这种问题，google出的一些参考
+- http://stackoverflow.com/questions/21755286/what-exactly-happens-when-tombstone-limit-is-reached

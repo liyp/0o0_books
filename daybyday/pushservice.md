@@ -15,6 +15,7 @@ Push Notification Service
 
 REF
 * [Android实现推送方式解决方案](http://www.cnblogs.com/hanyonglu/archive/2012/03/04/2378971.html)
+* [netty-million-level-push-service-design-points](http://www.infoq.com/cn/articles/netty-million-level-push-service-design-points/)
 
 ## 调研目前现存的PNS
 
@@ -47,6 +48,12 @@ iOS应用则会在被切换到后台一段时间后停止运行，这时候如�
 ### GCM
 
 ### JDPushService
+
+### MI-pushservice
+
+- [xiaomi-pushservice](http://www.infoq.com/cn/news/2014/11/xiaomi-1111-pushservice)
+
+![](http://cdn1.infoqstatic.com/statics_s2_20150922-0305/resource/news/2014/11/xiaomi-1111-pushservice/zh/resources/1.png)
 
 ## 第三方包分析
 
@@ -122,6 +129,17 @@ ref
   * MetaQ
 * Kafka
 * JeroMQ (ZMQ)
+
+## 接口设计
+
+### REST API 接口
+
+- [Baidu Push rest API](http://push.baidu.com/doc/restapi/restapi)
+
+API 列表
+- 推送消息到但太设备/APP `/rest/0.1/push/single_[device|app]`
+- 推送广播消息 `/rest/0.1/push/all_[device|app]`
+- 推送消息到批量设备/APP `/rest/0.1/push/batch_[device|app]`
 
 ## TODO
 
