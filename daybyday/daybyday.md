@@ -494,3 +494,7 @@ maven-surefire-plugin 测试插件，`src/test/java`中的XML不能被编译加�
 - [Citrix intsall into ubuntu](https://help.ubuntu.com/community/CitrixICAClientHowTo)
 
 全屏的问题解决方法： `vim ~/.ICAClient/All_Regions.ini` and `setting DesiredHRES=1366 and DesiredVRES=768`
+
+## 2015.10.21
+
+微服务架构 了，要有"去后端"思维；数据的存储处是心脏，REST API 是管道，各个微服务是器官 (包括 Node 端 、Java 端 、 PHP 端 、 iOS 端 、Android 端 、 Web 端等) 。所以，去掉传统后端思维吧～

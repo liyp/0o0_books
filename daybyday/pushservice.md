@@ -20,6 +20,12 @@ REF
 ## 调研目前现存的PNS
 
 * [Amazon Simple Notification Service](http://docs.aws.amazon.com/zh_cn/sns/latest/dg/welcome.html)
+* [LeanCloud](https://leancloud.cn/docs/push_guide.html)
+* [魔方](http://www.imofan.com/docs/doc_ios_push.jsp)
+* [GCM](https://developers.google.com/cloud-messaging/)
+* [Baidu Push](http://push.baidu.com/doc/restapi/restapi)
+    - [baidu android push](http://www.infoq.com/cn/articles/baidu-android-cloud-push/)
+
 
 ### Amazon SNS
 

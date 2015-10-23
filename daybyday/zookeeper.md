@@ -14,7 +14,7 @@ ref:
 * [Zookeeper 初体验之——JAVA API 初探](http://www.cnblogs.com/haippy/archive/2012/07/19/2600032.html)
 
 
-## zk watch 
+## zk watch
 
 
 > [ZooKeeper Watches](http://zookeeper.apache.org/doc/current/zookeeperProgrammers.html#ch_zkWatches)
@@ -40,3 +40,17 @@ Watches are one time triggers; if you get a watch event and you want to get noti
 Because watches are one time triggers and there is latency between getting the event and sending a new request to get a watch you cannot reliably see every change that happens to a node in ZooKeeper. Be prepared to handle the case where the znode changes multiple times between getting the event and setting the watch again. (You may not care, but at least realize it may happen.)
 A watch object, or function/context pair, will only be triggered once for a given notification. For example, if the same watch object is registered for an exists and a getData call for the same file and that file is then deleted, the watch object would only be invoked once with the deletion notification for the file.
 When you disconnect from a server (for example, when the server fails), you will not get any watches until the connection is reestablished. For this reason session events are sent to all outstanding watch handlers. Use session events to go into a safe mode: you will not be receiving events while disconnected, so your process should act conservatively in that mode.
+
+## Q&A
+
+线上遇到的问题。
+
+Exception while start cloud-pushservice: org.apache.zookeeper.KeeperException$ConnectionLossException: KeeperErrorCode = ConnectionLoss for /PUSH/ELECTION
+org.apache.zookeeper.KeeperException$ConnectionLossException: KeeperErrorCode = ConnectionLoss for /PUSH/ELECTION
+	at org.apache.zookeeper.KeeperException.create(KeeperException.java:90)
+	at org.apache.zookeeper.KeeperException.create(KeeperException.java:42)
+	at org.apache.zookeeper.ZooKeeper.exists(ZooKeeper.java:809)
+	at org.apache.zookeeper.ZooKeeper.exists(ZooKeeper.java:837)
+	at com.tplink.cloud.push.task.ZKManager.leaderElection(ZKManager.java:102)
+	at com.tplink.cloud.push.ServerStarter.startServer(ServerStarter.java:43)
+	at com.tplink.cloud.push.ServerStarter.main(ServerStarter.java:62)

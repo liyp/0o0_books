@@ -12,6 +12,9 @@ Linux ETC
 
 在公司的电脑上安装ubuntu，配置自己的开发环境。
 
+关闭ubuntu购物提醒
+
+`gsettings set com.canonical.Unity.Lenses disabled-scopes "['more_suggestions-amazon.scope', 'more_suggestions-u1ms.scope', 'more_suggestions-populartracks.scope', 'music-musicstore.scope', 'more_suggestions-ebay.scope', 'more_suggestions-ubuntushop.scope', 'more_suggestions-skimlinks.scope']"`
 
 ## linux tools
 
