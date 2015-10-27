@@ -23,6 +23,11 @@ $ git push origin develop
 
 ## reflog
 
+## push
+
+免去多次输入密码，缓存凭证：
+credential cache `git config --global credential.helper cache`
+
 ## other
 
 [Mercurial](https://mercurial.selenic.com)（轻量级分布式版本控制系统）
