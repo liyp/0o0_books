@@ -3,6 +3,32 @@ Docker
 
 - http://dockerpool.com/static/books/docker_practice/
 
+## Install
+
+使用docker-engine代替docker.io
+`sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D`
+
+edit your /etc/apt/sources.list.d/docker.list
+`vim /etc/apt/sources.list.d/docker.list`
+
+Ubuntu Wily
+`deb https://apt.dockerproject.org/repo ubuntu-wily main`
+
+`sudo apt-get update`
+
+remove the old
+`sudo apt-get purge lxc-docker*`
+
+install the new
+`sudo apt-get install docker-engine`
+
+> The docker daemon binds to a Unix socket instead of a TCP port. By default that Unix socket is owned by the user root and other users can access it with sudo. For this reason, docker daemon always runs as the root user.
+
+> To avoid having to use sudo when you use the docker command, create a Unix group called docker and add users to it. When the docker daemon starts, it makes the ownership of the Unix socket read/writable by the docker group.
+
+Create the docker group and add your user.
+`sudo usermod -aG docker ubuntu`
+
 ## Image
 
 ### docker commit
