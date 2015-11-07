@@ -34,7 +34,7 @@ Docker 镜像是怎么实现增量的修改和维护的？ 每个镜像都由很
 另一个更常用的就是将一个只读的分支和一个可写的分支联合在一起，Live CD 正是基于此方法可以允许在镜像不变的基础上允许用户在其上进行一些写操作。
 Docker 在 AUFS 上构建的容器也是利用了类似的原理。
 
-## container
+## Container
 
 当利用 docker run 来创建容器时，Docker 在后台运行的标准操作包括：
 
@@ -59,3 +59,12 @@ Docker 在 AUFS 上构建的容器也是利用了类似的原理。
 简便docker操作
 > `wget -P ~ https://github.com/yeasy/docker_practice/raw/master/_local/.bashrc_docker;`  
 > `echo "[ -f ~/.bashrc_docker ] && . ~/.bashrc_docker" >> ~/.bashrc; source ~/.bashrc`
+
+## Volume
+
+数据卷是一个可供一个或多个容器使用的特殊目录，它绕过 UFS，可以提供很多有用的特性：
+
+- 数据卷可以在容器之间共享和重用
+- 对数据卷的修改会立马生效
+- 对数据卷的更新，不会影响镜像
+- 卷会一直存在，直到没有容器使用
