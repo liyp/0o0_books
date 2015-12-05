@@ -3,6 +3,21 @@ Maven
 
 maven2 和 maven3 有不兼容的地方，maven3可以向后兼容。
 
+##  maven archetype 模板工程
+
+> http://maven.apache.org/archetype/maven-archetype-plugin/
+
+```sh
+cd ${project.root.dir} # 进入要创建模板的 project
+mvn archetype:create-from-project
+cd target/generated-sources/archetype
+mvn -Dmaven.test.skip=true clean install  # 安装道本地仓库
+
+# 可以先进行更新，本地archetype存放在：${user.home}/.m2/archetype-catalog.xml中
+#mvn archetype:update-local-catalog
+
+mvn archetype:generate -DarchetypeCatalog=local # 由模板创建工程
+```
 
 ## Q&A
 

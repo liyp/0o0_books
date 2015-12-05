@@ -498,3 +498,7 @@ maven-surefire-plugin 测试插件，`src/test/java`中的XML不能被编译加�
 ## 2015.10.21
 
 微服务架构 了，要有"去后端"思维；数据的存储处是心脏，REST API 是管道，各个微服务是器官 (包括 Node 端 、Java 端 、 PHP 端 、 iOS 端 、Android 端 、 Web 端等) 。所以，去掉传统后端思维吧～
+
+## 2015.11.30
+
+在公司内部搭建一个 gitlab 服务，学习使用这类服务。特别是一整套生态
