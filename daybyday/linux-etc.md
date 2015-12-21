@@ -16,6 +16,10 @@ Linux ETC
 
 `gsettings set com.canonical.Unity.Lenses disabled-scopes "['more_suggestions-amazon.scope', 'more_suggestions-u1ms.scope', 'more_suggestions-populartracks.scope', 'music-musicstore.scope', 'more_suggestions-ebay.scope', 'more_suggestions-ubuntushop.scope', 'more_suggestions-skimlinks.scope']"`
 
+## 文件权限
+
+[linux 文件权限](http://www.cnblogs.com/kzloser/articles/2673790.html)
+
 ## linux tools
 
 ### ZSH
@@ -39,6 +43,33 @@ Linux ETC
 ### tmux
 
 ### crontab
+
+```
+# Edit this file to introduce tasks to be run by cron.
+#
+# Each task to run has to be defined through a single line
+# indicating with different fields when the task will be run
+# and what command to run for the task
+#
+# To define the time you can provide concrete values for
+# minute (m), hour (h), day of month (dom), month (mon),
+# and day of week (dow) or use '*' in these fields (for 'any').#
+# Notice that tasks will be started based on the cron's system
+# daemon's notion of time and timezones.
+#
+# Output of the crontab jobs (including errors) is sent through
+# email to the user the crontab file belongs to (unless redirected).
+#
+# For example, you can run a backup of all your user accounts
+# at 5 a.m every week with:
+# 0 5 * * 1 tar -zcf /var/backups/home.tgz /home/
+#
+# For more information see the manual pages of crontab(5) and cron(8)
+#
+# m h  dom mon dow   command
+```
+
+**下面是 quartz-scheduler 的cron表达式**
 
 http://www.quartz-scheduler.org/documentation/quartz-1.x/tutorials/crontrigger
 
@@ -135,3 +166,15 @@ mv resume{z,}.doc
 Brace expansion(大括号扩展或叫做花括号扩展)模式是一可选的preamble(前导字符)，后面跟着一系列逗号分隔的字符串，包含在一对花括号中，
 再后面是一个可选的postscript(打印编程语言)。preamble(前导字符)被添加到花括号中的每个字符串前面，postscript(打印编程语言)被附加到每个结果字符串之后，
 从左到右进行扩展。花括号扩展可以嵌套。扩展字符串的结果没有排序；而是保留了从左到右的顺序。
+
+### SMB/CIFS
+
+smbclient主要用在Linux访问windows的共享文件，或者是访问Linux的samba服务器。
+
+功能说明：可存取SMB/CIFS服务器的用户端程序。
+
+语法：smbclient [网络资源][密码][-EhLN][-B<IP地址>][-d<排错层级>][-i<范围>][-I<IP地址>][-l<记录文件>][-M<NetBIOS名称>][-n<NetBIOS名称>][-O<连接槽选项>][-p<TCP连接端口>][-R<名称解析顺序>][-s<目录>][-t<服务器字码>][-T<tar选项>][-U<用户名称>][-W<工作群组>]
+
+补充说明：SMB与CIFS为服务器通信协议，常用于Windows95/98/NT等系统。smbclient可让Linux系统存取Windows系统所分享的资源。
+
+`smbclient -c "cd dir; put README.md" -U username%passwd   //file.net/sharedDir`

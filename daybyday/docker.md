@@ -94,3 +94,7 @@ Docker 在 AUFS 上构建的容器也是利用了类似的原理。
 - 对数据卷的修改会立马生效
 - 对数据卷的更新，不会影响镜像
 - 卷会一直存在，直到没有容器使用
+
+## Q&A
+
+- [Docker not starting “ could not delete the default bridge network: network bridge has active endpoints”"](http://stackoverflow.com/questions/33600154/docker-not-starting-could-not-delete-the-default-bridge-network-network-bridg)
