@@ -85,3 +85,7 @@ Docker 在 AUFS 上构建的容器也是利用了类似的原理。
 简便docker操作
 > `wget -P ~ https://github.com/yeasy/docker_practice/raw/master/_local/.bashrc_docker;`  
 > `echo "[ -f ~/.bashrc_docker ] && . ~/.bashrc_docker" >> ~/.bashrc; source ~/.bashrc`
+
+## Q&A
+
+- [Docker not starting “ could not delete the default bridge network: network bridge has active endpoints”"](http://stackoverflow.com/questions/33600154/docker-not-starting-could-not-delete-the-default-bridge-network-network-bridg)

@@ -35,6 +35,9 @@ xclip -sel clip < ~/.ssh/id_rsa.pub
 ssh -T git@github.com
 ```
 
+> credential store `git config --global credential.helper store`  
+> [credential])(https://git-scm.com/docs/gitcredentials) 这个更厉害
+
 ## other
 
 [Mercurial](https://mercurial.selenic.com)（轻量级分布式版本控制系统）

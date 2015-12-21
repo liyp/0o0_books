@@ -62,6 +62,6 @@ http://stackoverflow.com/questions/7793529/notification-badge-number-increment?r
 
 现在，您可以基于密钥和 PEM 版本的 iPhone 开发人员证书生成有效的 P12 文件：
 
-`openssl pkcs12 -export -inkey mykey.key -in developer_identity.pem -out iphone_dev.p12`
+`openssl pkcs12 -export -inkey mykey.pem -in developer_identity.pem -out iphone_dev.p12`
 
 如果您使用的是 Mac OS 钥匙串中的密钥，则使用上一步骤中生成的 PEM 版本。否则搜索，请使用以前生成的 OpenSSL 密钥（位于 Windows 上）。

@@ -16,6 +16,10 @@ Linux ETC
 
 `gsettings set com.canonical.Unity.Lenses disabled-scopes "['more_suggestions-amazon.scope', 'more_suggestions-u1ms.scope', 'more_suggestions-populartracks.scope', 'music-musicstore.scope', 'more_suggestions-ebay.scope', 'more_suggestions-ubuntushop.scope', 'more_suggestions-skimlinks.scope']"`
 
+## 文件权限
+
+[linux 文件权限](http://www.cnblogs.com/kzloser/articles/2673790.html)
+
 ## linux tools
 
 ### ZSH
