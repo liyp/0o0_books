@@ -98,3 +98,9 @@ Docker 在 AUFS 上构建的容器也是利用了类似的原理。
 ## Q&A
 
 - [Docker not starting “ could not delete the default bridge network: network bridge has active endpoints”"](http://stackoverflow.com/questions/33600154/docker-not-starting-could-not-delete-the-default-bridge-network-network-bridg)
+
+- Get a docker container's IP
+```sh
+$(ifconfig eth0 |grep -w "inet addr" |cut -d: -f2 |cut -d" " -f1)
+$(docker inspect --format '{{ .NetworkSettings.IPAddress }}' `hostname`)
+```
