@@ -91,8 +91,8 @@ Object-mapping API 问题
 system.log 中出现如下异常。(执行大量delete操作后，100k->2k的程度)
 
 ```
-WARN  [SharedPool-Worker-2] 2015-09-28 16:03:30,780 SliceQueryFilter.java:242 - Read 2968 live and 5934 tombstoned cells in cloud.push_app_task (see tombstone_warn_threshold). 5001 columns was requested, slices=[4_1433132231_0002232786FA_506_00eebd999772:time-]
-ERROR [SharedPool-Worker-2] 2015-09-28 16:03:31,729 SliceQueryFilter.java:218 - Scanned over 100000 tombstones in cloud.push_app_task; query aborted (see tombstone_failure_threshold)
+WARN  [SharedPool-Worker-2] 2015-09-28 16:03:30,780 SliceQueryFilter.java:242 - Read 2968 live and 5934 tombstoned cells in [ks.tbl] (see tombstone_warn_threshold). 5001 columns was requested, slices=[4_1433132231_0002232786FA_506_00eebd999772:time-]
+ERROR [SharedPool-Worker-2] 2015-09-28 16:03:31,729 SliceQueryFilter.java:218 - Scanned over 100000 tombstones in [ks.tbl]; query aborted (see tombstone_failure_threshold)
 WARN  [SharedPool-Worker-2] 2015-09-28 16:03:31,736 AbstractTracingAwareExecutorService.java:169 - Uncaught exception on thread Thread[SharedPool-Worker-2,5,main]: {}
 java.lang.RuntimeException: org.apache.cassandra.db.filter.TombstoneOverwhelmingException
         at org.apache.cassandra.service.StorageProxy$DroppableRunnable.run(StorageProxy.java:2182) ~[apache-cassandra-2.1.5.jar:2.1.5]
@@ -124,3 +124,23 @@ Caused by: org.apache.cassandra.db.filter.TombstoneOverwhelmingException: null
 
 这种问题，google出的一些参考
 - http://stackoverflow.com/questions/21755286/what-exactly-happens-when-tombstone-limit-is-reached
+- http://www.jsravn.com/2015/05/13/cassandra-tombstones-collections.html
+- http://stackoverflow.com/questions/27776337/what-types-of-tombstones-does-cassandra-support
+
+在新的版本下，该问题可能已经被修复了
+
+
+### cassandra NTP 节点时间部同步问题
+
+- [cassandra集群要求严格的时间同步](http://zhaoyanblog.com/archives/271.html)
+> cassandra的集群对时间的要求是很严格的，在集群中的任何一台机器时间都必须保持同步，即便有一秒的延迟，也会带来莫名其妙的问题。因为cassandra是根据时间戳分辨出最后到达的响应，假设对同一个记录进行不同的操作，如果时间不同步，可能会导致前面的操作在后面的操作之后生效。当在高速操作的时候，可能会发生记录删除不掉，表drop了仍然存在等等奇怪的现象。同时如果发生这些形形色色的奇怪问题，你应该首先查一下你的集群是否时间同步，假设真是时间不同步导致的，而你又没发现，这会浪费你好多时间去调查原因。
+
+我遇到的问题：client端执行两个cql（对一个字段进行更新操作），间隔相差10s，但是服务器两节点时间差约60s。导致后执行的cql结果还是上个cql的结果。
+
+分析过程忽略了集群时间同步的问题，我开启client的queue tracing，得到cql的sessionId即可进行分析。
+
+
+```sql
+select * from system_traces.sessions where session_id = $sessionId;
+select * from system_traces.events where session_id = $sessionId;
+```

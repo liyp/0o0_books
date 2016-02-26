@@ -502,3 +502,17 @@ maven-surefire-plugin 测试插件，`src/test/java`中的XML不能被编译加�
 ## 2015.11.30
 
 在公司内部搭建一个 gitlab 服务，学习使用这类服务。特别是一整套生态
+
+
+## 2016-01-19 15:22:02
+
+思考系统的架构，而不是局限与局部。
+
+从推送的系统设计谈起，目前我维护的推送系统真是一团糟糕，缺少系统框架层的思考，而我还是在犯老毛病，
+试图逃避摆脱这种问题。
+
+## 2016-01-25 14:57:59
+
+[Why does ec2 monitoring show 100% cpu and top only 20%?](http://serverfault.com/questions/400533/why-does-ec2-monitoring-show-100-cpu-and-top-only-20?rq=1)
+
+On-instance monitoring tools such as top report a metric of Steal Time (ST), or Stolen CPU. Top and tools that use similar methods of gathering performance metrics will report your instances usage of the physical cores on the host, and not just the instance itself. Any time the instance requests more than its allocated share, you will see the ST metric above zero. This does not mean you are not getting the resources allocated to the instance, but that your instance is requesting more resources than it is allocated to that particular instance size.
