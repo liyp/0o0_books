@@ -144,3 +144,33 @@ Caused by: org.apache.cassandra.db.filter.TombstoneOverwhelmingException: null
 select * from system_traces.sessions where session_id = $sessionId;
 select * from system_traces.events where session_id = $sessionId;
 ```
+
+
+### cassandra client-side TIMESTAMP
+
+- https://datastax.github.io/java-driver/manual/query_timestamps/
+
+> **Client-side generation**
+>
+This is enabled by default if you’re using the driver 3.0 and a version of Cassandra that supports native protocol v3 or above.
+
+> **Server-side generation**
+>
+This is the “legacy” behavior if you’re connected to a Cassandra version that only supports protocol v2 or below. The server will assign a timestamp based on the time it receives the query.
+>
+This can be a problem when the order of the writes matter: with unlucky timing (different coordinators, network latency, etc.), two successive requests from the same client might be processed in a different order server-side, and end up with out-of-order timestamps. If protocol v3 is not an option, the only workaround is to add USING TIMESTAMP in your queries.
+
+> **Summary**
+>
+As shown in the previous sections, there are multiple ways to provide a timestamp, some of which overlap. The order of precedence is the following:
+1. if there is a USING TIMESTAMP clause in the CQL string, use that over anything else;
+2. otherwise, if a default timestamp was set on the statement and is different from Long.MIN_VALUE, use it;
+3. otherwise, if a generator is specified, invoke it and use its result if it is different from Long.MIN_VALUE;
+4. otherwise, let the server assign the timestamp.
+>
+Steps 2 and 3 only apply if native protocol v3 or above is in use.
+
+
+- http://www.datastax.com/dev/blog/java-driver-2-1-2-native-protocol-v3
+
+解决办法：同样是`NTP`。不仅`C* cluster`要时间同步，`server-side` and `client-side` 也需要同步。

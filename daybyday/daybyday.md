@@ -516,3 +516,13 @@ maven-surefire-plugin 测试插件，`src/test/java`中的XML不能被编译加�
 [Why does ec2 monitoring show 100% cpu and top only 20%?](http://serverfault.com/questions/400533/why-does-ec2-monitoring-show-100-cpu-and-top-only-20?rq=1)
 
 On-instance monitoring tools such as top report a metric of Steal Time (ST), or Stolen CPU. Top and tools that use similar methods of gathering performance metrics will report your instances usage of the physical cores on the host, and not just the instance itself. Any time the instance requests more than its allocated share, you will see the ST metric above zero. This does not mean you are not getting the resources allocated to the instance, but that your instance is requesting more resources than it is allocated to that particular instance size.
+
+## 2016-03-21 09:53:30
+
+> ftp 资源
+
+```
+FTP地址：ftp://ftp1.linuxidc.com
+用户名：ftp1.linuxidc.com
+密码：www.linuxidc.com
+```
