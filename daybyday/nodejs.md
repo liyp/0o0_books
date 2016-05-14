@@ -31,3 +31,7 @@
     package.json                    # 元数据文件
     README.md                       # 说明文件
 ```
+
+### npm
+
+#### npm 加速

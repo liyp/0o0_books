@@ -174,3 +174,18 @@ Steps 2 and 3 only apply if native protocol v3 or above is in use.
 - http://www.datastax.com/dev/blog/java-driver-2-1-2-native-protocol-v3
 
 解决办法：同样是`NTP`。不仅`C* cluster`要时间同步，`server-side` and `client-side` 也需要同步。
+
+### cassandra 副本间同步需要多久，即最一致性达成需要多久
+
+V2.1.5 三节点集群，一副本写成功操作，到三副本都同步达到一致性要求，需要多久？
+
+```
+ubuntu@ip-10-5-2-213:~/cloud-third/cassandra/apache-cassandra-2.1.5/data$ du --max-depth=1 -h
+8.0G	./commitlog
+5.7M	./saved_caches
+39M	./data
+8.1G	.
+```
+### cassandra request 吞吐多少，什么情况下cassandra会丢掉request？
+
+比如使用`Accessor`方法下，返回的`ResultSet`为空的情况。

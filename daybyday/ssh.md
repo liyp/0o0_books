@@ -55,3 +55,7 @@ mysqldump –add-drop-table –extended-insert –force –log-error=error.log -
 # 实时SSH网络吞吐量测试
 yes | pv | ssh $host “cat > /dev/null”
 ```
+
+## ssh 远程命令执行过程中，环境变量问题
+
+> http://feihu.me/blog/2014/env-problem-when-ssh-executing-command-on-remote/

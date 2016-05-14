@@ -143,3 +143,9 @@ smbclient主要用在Linux访问windows的共享文件，或者是访问Linux的
 1 > /dev/null ： 首先表示标准输出重定向到空设备文件，也就是不输出任何信息到终端，说白了就是不显示任何信息。
 2>&1 ：接着，标准错误输出重定向（等同于）标准输出，因为之前标准输出已经重定向到了空设备文件，所以标准错误输出也重定向到空设备文件。
 ```
+
+### linux 系统时钟
+
+- [Linux 时钟管理](https://www.ibm.com/developerworks/cn/linux/l-cn-timerm/)
+- [Linux 时钟处理机制](https://www.ibm.com/developerworks/cn/linux/l-cn-clocks/)
+- [Linux 时钟与计时器](http://www.51joben.com/archives/7181.html)
