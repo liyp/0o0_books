@@ -1,23 +1,23 @@
-VIM
-===
+# VIM
 
-### 命令
+## 命令
 
-命令  | xx
------ | -----
-:set fileformat | 设置文件格式
-:set endofline | 设置文件结束符
-:set noendofline | 取消文件结束符
-:set list | 进入List Mode
-:set nolist | 退出List Mode
-:%s/\n//g | 删除换行符
-:set textwidth | 设置行宽
-:set textwidth | 设置行边距
-:join | 合并多行
-J | 合并两行
+| 命令 | xx |
+| :--- | :--- |
+| :set fileformat | 设置文件格式 |
+| :set endofline | 设置文件结束符 |
+| :set noendofline | 取消文件结束符 |
+| :set list | 进入List Mode |
+| :set nolist | 退出List Mode |
+| :%s/\n//g | 删除换行符 |
+| :set textwidth | 设置行宽 |
+| :set textwidth | 设置行边距 |
+| :join | 合并多行 |
+| J | 合并两行 |
 
 **copy&paste**
-```
+
+```text
 首先，可以在命令模式下输入v进入自由选取模式，选择需要剪切的文字后，按下d就可以进行剪切了。
 其他命令模式下剪切命令：
 dd：剪切当前行
@@ -47,8 +47,8 @@ y3B：从当前光标位置（不包括光标位置）反向复制3个单词
 ```
 
 **diff**
-```sh
 
+```bash
 vimdiff  FILE_LEFT  FILE_RIGHT
 
 vim -d  FILE_LEFT  FILE_RIGHT
@@ -74,17 +74,16 @@ do (diff "get"，之所以不用dg，是因为dg已经被另一个命令占用�
 
 zo
 zc
-
 ```
 
-### plugin
+## plugin
 
 * [pathogen](https://github.com/tpope/vim-pathogen)
 * [vundle](https://github.com/gmarik/Vundle.vim)
 
 > Vundle .vimrc config
 
-```vim
+```text
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
@@ -129,7 +128,8 @@ filetype plugin indent on    " required
 " Put your non-Plugin stuff after this line
 ```
 
-### autocompletion
+## autocompletion
 
 * python
-    - [jedi-vim](https://github.com/davidhalter/jedi-vim)
+  * [jedi-vim](https://github.com/davidhalter/jedi-vim)
+

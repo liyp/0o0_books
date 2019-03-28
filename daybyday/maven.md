@@ -1,13 +1,12 @@
-Maven
-=====
+# Maven
 
 maven2 和 maven3 有不兼容的地方，maven3可以向后兼容。
 
-##  maven archetype 模板工程
+## maven archetype 模板工程
 
-> http://maven.apache.org/archetype/maven-archetype-plugin/
+> [http://maven.apache.org/archetype/maven-archetype-plugin/](http://maven.apache.org/archetype/maven-archetype-plugin/)
 
-```sh
+```bash
 cd ${project.root.dir} # 进入要创建模板的 project
 mvn archetype:create-from-project
 cd target/generated-sources/archetype
@@ -25,10 +24,9 @@ mvn archetype:generate -DarchetypeCatalog=local # 由模板创建工程
 
 > [PluginContainerException](https://cwiki.apache.org/confluence/display/MAVEN/PluginContainerException)
 
-在构建过程中，老是报出`Build Failure`，其实可以很简单的根据最下面`[Help 1]`就可以解决的，我倒腾了半天。**谨记** 多关注系统返回信息。
-这还有个原因，内网的MAVEN仓库的包可能有问题，也或许是下载的时候网络出的问题，下载的包不完整，导致构建的时候出现 class miss
+在构建过程中，老是报出`Build Failure`，其实可以很简单的根据最下面`[Help 1]`就可以解决的，我倒腾了半天。**谨记** 多关注系统返回信息。 这还有个原因，内网的MAVEN仓库的包可能有问题，也或许是下载的时候网络出的问题，下载的包不完整，导致构建的时候出现 class miss
 
-```
+```text
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD FAILURE
 [INFO] ------------------------------------------------------------------------
@@ -60,3 +58,4 @@ mvn archetype:generate -DarchetypeCatalog=local # 由模板创建工程
 [ERROR] For more information about the errors and possible solutions, please read the following articles:
 [ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/PluginContainerException
 ```
+

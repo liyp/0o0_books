@@ -4,7 +4,7 @@
 
 [Java里阻塞线程的三种实现方法](http://my.oschina.net/flashsword/blog/114527)
 
-> JDK里提供了便利的ThreadPoolExecutor以及其包装的工具类Executors。但是我们知道ExecutorService.excute(Runnable r)是异步的，超过线程池处理能力的线程会被加入到执行队列里。有时候为了保证任务提交的顺序性，我们不希望有这个执行队列，在线程池满的时候，则把主线程阻塞。那么，怎么实现呢？
+> JDK里提供了便利的ThreadPoolExecutor以及其包装的工具类Executors。但是我们知道ExecutorService.excute\(Runnable r\)是异步的，超过线程池处理能力的线程会被加入到执行队列里。有时候为了保证任务提交的顺序性，我们不希望有这个执行队列，在线程池满的时候，则把主线程阻塞。那么，怎么实现呢？
 
 ```java
 private ReentrantLock pauseLock = new ReentrantLock();
@@ -82,4 +82,5 @@ public static ExecutorService newBlockingExecutorsUseCallerRun(int size) {
 ```
 
 > 除了JDK的CallerRunsPolicy方案，其他的方案都存在一个隐患：  
-如果线程仍在执行，此时显式调用`ExecutorService.shutdown()`方法，会因为还有一个线程阻塞没有入队，而此时线程已经停止了，而这个元素才刚刚入队，最终会导致`RejectedExecutionException`。
+> 如果线程仍在执行，此时显式调用`ExecutorService.shutdown()`方法，会因为还有一个线程阻塞没有入队，而此时线程已经停止了，而这个元素才刚刚入队，最终会导致`RejectedExecutionException`。
+

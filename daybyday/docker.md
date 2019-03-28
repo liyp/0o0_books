@@ -1,33 +1,26 @@
-Docker
-======
+# Docker
 
-- http://dockerpool.com/static/books/docker_practice/
+* [http://dockerpool.com/static/books/docker\_practice/](http://dockerpool.com/static/books/docker_practice/)
 
 ## Install
 
-使用docker-engine代替docker.io
-`sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D`
+使用docker-engine代替docker.io `sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D`
 
-edit your /etc/apt/sources.list.d/docker.list
-`vim /etc/apt/sources.list.d/docker.list`
+edit your /etc/apt/sources.list.d/docker.list `vim /etc/apt/sources.list.d/docker.list`
 
-Ubuntu Wily
-`deb https://apt.dockerproject.org/repo ubuntu-wily main`
+Ubuntu Wily `deb https://apt.dockerproject.org/repo ubuntu-wily main`
 
 `sudo apt-get update`
 
-remove the old
-`sudo apt-get purge lxc-docker*`
+remove the old `sudo apt-get purge lxc-docker*`
 
-install the new
-`sudo apt-get install docker-engine`
+install the new `sudo apt-get install docker-engine`
 
 > The docker daemon binds to a Unix socket instead of a TCP port. By default that Unix socket is owned by the user root and other users can access it with sudo. For this reason, docker daemon always runs as the root user.
-
+>
 > To avoid having to use sudo when you use the docker command, create a Unix group called docker and add users to it. When the docker daemon starts, it makes the ownership of the Unix socket read/writable by the docker group.
 
-Create the docker group and add your user.
-`sudo usermod -aG docker ubuntu`
+Create the docker group and add your user. `sudo usermod -aG docker ubuntu`
 
 ## Image
 
@@ -41,10 +34,10 @@ Create the docker group and add your user.
 
 Dockerfile 基本的语法是
 
-- 使用#来注释
-- FROM 指令告诉 Docker 使用哪个镜像作为基础
-- 接着是维护者的信息
-- RUN开头的指令会在创建中运行，比如安装一个软件包，在这里使用 apt-get 来安装了一些软件
+* 使用\#来注释
+* FROM 指令告诉 Docker 使用哪个镜像作为基础
+* 接着是维护者的信息
+* RUN开头的指令会在创建中运行，比如安装一个软件包，在这里使用 apt-get 来安装了一些软件
 
 `sudo docker build -t="repo:tag" .`
 
@@ -56,9 +49,7 @@ Dockerfile 基本的语法是
 
 Docker 镜像是怎么实现增量的修改和维护的？ 每个镜像都由很多层次构成，Docker 使用 Union FS 将这些不同的层结合到一个镜像中去。
 
-通常 Union FS 有两个用途, 一方面可以实现不借助 LVM、RAID 将多个 disk 挂到同一个目录下,
-另一个更常用的就是将一个只读的分支和一个可写的分支联合在一起，Live CD 正是基于此方法可以允许在镜像不变的基础上允许用户在其上进行一些写操作。
-Docker 在 AUFS 上构建的容器也是利用了类似的原理。
+通常 Union FS 有两个用途, 一方面可以实现不借助 LVM、RAID 将多个 disk 挂到同一个目录下, 另一个更常用的就是将一个只读的分支和一个可写的分支联合在一起，Live CD 正是基于此方法可以允许在镜像不变的基础上允许用户在其上进行一些写操作。 Docker 在 AUFS 上构建的容器也是利用了类似的原理。
 
 ## Container
 
@@ -72,17 +63,19 @@ Docker 在 AUFS 上构建的容器也是利用了类似的原理。
 6. 执行用户指定的应用程序
 7. 执行完毕后容器被终止
 
-`sudo docker run -idt ubuntu` Daemonized 运行容器 -d  
+`sudo docker run -idt ubuntu` Daemonized 运行容器 -d
 
 `sudo docker ps` 查看容器信息
 
 **attach** 但是使用 attach 命令有时候并不方便。当多个窗口同时 attach 到同一个容器的时候，所有窗口都会同步显示。当某个窗口因命令阻塞时,其他窗口也无法执行操作了。
 
 **nsenter**
+
 > `PID=$(docker inspect --format "{{ .State.Pid }}" <container>)`  
 > `sudo nsenter --target $PID --mount --uts --ipc --net --pid`
 
 简便docker操作
+
 > `wget -P ~ https://github.com/yeasy/docker_practice/raw/master/_local/.bashrc_docker;`  
 > `echo "[ -f ~/.bashrc_docker ] && . ~/.bashrc_docker" >> ~/.bashrc; source ~/.bashrc`
 
@@ -90,17 +83,18 @@ Docker 在 AUFS 上构建的容器也是利用了类似的原理。
 
 数据卷是一个可供一个或多个容器使用的特殊目录，它绕过 UFS，可以提供很多有用的特性：
 
-- 数据卷可以在容器之间共享和重用
-- 对数据卷的修改会立马生效
-- 对数据卷的更新，不会影响镜像
-- 卷会一直存在，直到没有容器使用
+* 数据卷可以在容器之间共享和重用
+* 对数据卷的修改会立马生效
+* 对数据卷的更新，不会影响镜像
+* 卷会一直存在，直到没有容器使用
 
 ## Q&A
 
-- [Docker not starting “ could not delete the default bridge network: network bridge has active endpoints”"](http://stackoverflow.com/questions/33600154/docker-not-starting-could-not-delete-the-default-bridge-network-network-bridg)
+* [Docker not starting “ could not delete the default bridge network: network bridge has active endpoints”"](http://stackoverflow.com/questions/33600154/docker-not-starting-could-not-delete-the-default-bridge-network-network-bridg)
+* Get a docker container's IP
 
-- Get a docker container's IP
-```sh
-$(ifconfig eth0 |grep -w "inet addr" |cut -d: -f2 |cut -d" " -f1)
-$(docker inspect --format '{{ .NetworkSettings.IPAddress }}' `hostname`)
-```
+  ```bash
+  $(ifconfig eth0 |grep -w "inet addr" |cut -d: -f2 |cut -d" " -f1)
+  $(docker inspect --format '{{ .NetworkSettings.IPAddress }}' `hostname`)
+  ```
+

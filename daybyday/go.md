@@ -1,11 +1,10 @@
-[Golang](https://golang.org/)
-=============================
+# Golang
 
 ## 从源码安装Golang
 
-- https://golang.org/doc/install/source
+* [https://golang.org/doc/install/source](https://golang.org/doc/install/source)
 
-```
+```text
 # go gccgo
 sudo apt-get install gccgo-5
 
@@ -21,7 +20,8 @@ GOOS=linux GOARCH=amd64 ./bootstrap.bash
 ```
 
 If all goes well, it will finish by printing output like:
-```
+
+```text
 ALL TESTS PASSED
 
 ---
@@ -31,7 +31,8 @@ Installed commands in /home/you/go/bin.
 ```
 
 设置 `.profile`
-```
+
+```text
 # go 1.5
 export GOROOT=$HOME/etc/go
 export PATH=$GOROOT/bin:$PATH
@@ -39,3 +40,4 @@ export PATH=$GOROOT/bin:$PATH
 export GOPATH=$HOME/go_work
 export PATH=$GOPATH/bin:$PATH
 ```
+

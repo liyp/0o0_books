@@ -1,5 +1,4 @@
-Kafka
-=====
+# Kafka
 
 ## 1. apache kafka
 
@@ -25,4 +24,5 @@ Apache Kafka与传统消息系统相比，有以下不同：
 
 ### kafka on docker
 
-- [wurstmeister_kafka-docker](http://wurstmeister.github.io/kafka-docker/)
+* [wurstmeister\_kafka-docker](http://wurstmeister.github.io/kafka-docker/)
+

@@ -1,5 +1,4 @@
-Web
-=========
+# Web
 
 学习Web一些知识，对前端的一些涉及。
 
@@ -18,9 +17,9 @@ Java Web 的技术一些毛毛... SSH
 
 ## web 容器
 
-什么是反向代理
-web容器 tomcat apache 都是什么原理
+什么是反向代理 web容器 tomcat apache 都是什么原理
 
 ## https
 
 [https原理及tomcat配置https方法](http://jingyan.baidu.com/article/a948d6515d3e850a2dcd2ee6.html)
+

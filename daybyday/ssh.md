@@ -1,17 +1,15 @@
-SSH
-===
+# SSH
 
 ## ssh tunnel
 
-- [利用SSH Tunnel帮助内网的机器连接互联网](https://www-304.ibm.com/connections/blogs/liuxx/entry/%25e5%2588%25a9%25e7%2594%25a8ssh_tunnel%25e5%25b8%25ae%25e5%258a%25a9%25e5%2586%2585%25e7%25bd%2591%25e7%259a%2584%25e6%259c%25ba%25e5%2599%25a8%25e8%25bf%259e%25e6%258e%25a5%25e4%25ba%2592%25e8%2581%2594%25e7%25bd%259158?lang=tr_tr)
-
-- [实战 SSH 端口转发](https://www.ibm.com/developerworks/cn/linux/l-cn-sshforward/)
+* [利用SSH Tunnel帮助内网的机器连接互联网](https://www-304.ibm.com/connections/blogs/liuxx/entry/%e5%88%a9%e7%94%a8ssh_tunnel%e5%b8%ae%e5%8a%a9%e5%86%85%e7%bd%91%e7%9a%84%e6%9c%ba%e5%99%a8%e8%bf%9e%e6%8e%a5%e4%ba%92%e8%81%94%e7%bd%9158?lang=tr_tr)
+* [实战 SSH 端口转发](https://www.ibm.com/developerworks/cn/linux/l-cn-sshforward/)
 
 ### 正向代理
 
 ## ssh commands
 
-```sh
+```bash
 # 复制SSH密钥到目标主机，开启无密码SSH登录
 ssh-copy-id user@host
 # or
@@ -58,4 +56,5 @@ yes | pv | ssh $host “cat > /dev/null”
 
 ## ssh 远程命令执行过程中，环境变量问题
 
-> http://feihu.me/blog/2014/env-problem-when-ssh-executing-command-on-remote/
+> [http://feihu.me/blog/2014/env-problem-when-ssh-executing-command-on-remote/](http://feihu.me/blog/2014/env-problem-when-ssh-executing-command-on-remote/)
+
